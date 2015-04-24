@@ -1,0 +1,13 @@
+topologyName=CDR
+killIfRunning=true
+zk.host=sandbox.hortonworks.com:2181
+numWorkers=1
+localMode=true
+CDR.topic=cdr
+CDR.fromBeginning=true
+jdbcURL=jdbc:phoenix:sandbox.hortonworks.com:2181:/hbase
+solrServerUrl=http://sandbox.hortonworks.com:8983/solr/cdr
+dateFormat=dd/MM/yyyy HH:mm:ss
+AEIHDFS.outDir=/test/AEIHDFS_stream/
+AEIHDFS.withFsUrl=hdfs://n0.dev:8020/
+AEIHDFS.countSyncPolicy=2

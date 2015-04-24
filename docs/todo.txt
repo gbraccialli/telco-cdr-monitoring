@@ -1,0 +1,8 @@
+1- dropped calls use case
+2- smtp bolt, filters, hive bolt, phoenix bolt 
+3- readme (markdown) + ppt + screenshots
+4- remove hard codes and move to .properties (field names from Topology and GenerateSampleCDR)
+5- create a install script from clean sandbox 2.2.4
+6- option to produce directly on kafka instead of files-->flume-->kafka
+7- make windows countings use hbase (in case of a bolt failure)
+	https://github.com/jrkinley/storm-hbase
