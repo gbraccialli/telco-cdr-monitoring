@@ -4,12 +4,12 @@ public class SessionInformation {
 
 	private String cellId;
 	private String networkType;
-	private long timesamp;
+	private long timestamp;
 	
 	public SessionInformation(String cellId, String networkType, long timestamp) {
 		this.cellId = cellId;
 		this.networkType = networkType;
-		this.timesamp = timestamp;
+		this.timestamp = timestamp;
 	}
 	public String getCellId() {
 		return cellId;
@@ -20,11 +20,11 @@ public class SessionInformation {
 	public String getNetworkType() {
 		return networkType;
 	}
-	public long getTimesamp() {
-		return timesamp;
+	public long getTimestamp() {
+		return timestamp;
 	}
-	public void setTimesamp(long timesamp) {
-		this.timesamp = timesamp;
+	public void setTimestamp(long timesamp) {
+		this.timestamp = timesamp;
 	}
 	public void setNetworkType(String networkType) {
 		this.networkType = networkType;

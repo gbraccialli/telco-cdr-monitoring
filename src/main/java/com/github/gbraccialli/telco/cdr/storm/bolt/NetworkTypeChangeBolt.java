@@ -23,9 +23,9 @@ import com.github.gbraccialli.telco.cdr.storm.entity.SessionInformation;
 import com.github.randerzander.StormCommon.bolts.RollingCountFromTimestampBolt;
 import com.github.randerzander.StormCommon.utils.TupleHelpers;
 
-public class NetworkTypeChange implements IRichBolt {
+public class NetworkTypeChangeBolt implements IRichBolt {
 
-	private static final Logger LOG = Logger.getLogger(NetworkTypeChange.class);
+	private static final Logger LOG = Logger.getLogger(NetworkTypeChangeBolt.class);
 	private Calendar cal = Calendar.getInstance();
 	private String sessionIdField = "";
 	private String cellIdField = "";
@@ -35,7 +35,7 @@ public class NetworkTypeChange implements IRichBolt {
 	private long sessionCleanupIntervalInSeconds = 30*60; //30 minutes
 	private long maxTimestamp = 0;
 
-	public NetworkTypeChange(String sessionIdField, String cellIdField, String networkTypField, String timestampField, String dateFormat) {
+	public NetworkTypeChangeBolt(String sessionIdField, String cellIdField, String networkTypField, String timestampField, String dateFormat) {
 		this.sessionIdField = sessionIdField;  
 		this.cellIdField = cellIdField;
 		this.networkTypeField = networkTypField; 
@@ -43,7 +43,7 @@ public class NetworkTypeChange implements IRichBolt {
 		this.dateFormat = new SimpleDateFormat(dateFormat);
 	}
 	
-	public NetworkTypeChange withSessionCleanupIntervalInSeconds(long sessionCleanupIntervalInSeconds) {this.sessionCleanupIntervalInSeconds = sessionCleanupIntervalInSeconds; return this;};
+	public NetworkTypeChangeBolt withSessionCleanupIntervalInSeconds(long sessionCleanupIntervalInSeconds) {this.sessionCleanupIntervalInSeconds = sessionCleanupIntervalInSeconds; return this;};
 
 	private static final long serialVersionUID = 1901513019434766894L;
 	private OutputCollector collector;
@@ -100,7 +100,7 @@ public class NetworkTypeChange implements IRichBolt {
 	private void cleanupSessions(){
 		LOG.warn("NetworkTypeChange: cleaning old sessions info");
 		for (Entry<String,SessionInformation> entry: lastInformationPerSession.entrySet()){
-			if (entry.getValue().getTimesamp() < maxTimestamp - sessionCleanupIntervalInSeconds * 1000){
+			if (entry.getValue().getTimestamp() < maxTimestamp - sessionCleanupIntervalInSeconds * 1000){
 				lastInformationPerSession.remove(entry.getKey());
 			}
 		}
