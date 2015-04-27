@@ -96,7 +96,7 @@ public class DroppedCallBolt implements IRichBolt {
 				Values outputTuple = new Values();
 				outputTuple.add(simCardId);
 				outputTuple.add(phoneNumber);
-				outputTuple.add(timestampFormatted);
+				outputTuple.add(lastCDR.getTimestampFormatted());
 				outputTuple.add(lastCDR.getCellId());
 				outputTuple.add(lastCDR.getDropReason());
 				collector.emit(tuple, outputTuple);

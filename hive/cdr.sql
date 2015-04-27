@@ -51,5 +51,33 @@ TBLPROPERTIES(
   'autocreate'='false',
   'autodrop'='false'
  );
+ 
+
+drop view if exists dropped_call_view_cdr;
+create view dropped_call_view_cdr as 
+SELECT 
+  sim_card_id, 
+  phone_number, 
+  previous_cell_id, 
+  previous_drop_reason,
+  previous_record_opening_time
+FROM 
+(
+   SELECT 
+     t1.*,
+     LAG(record_opening_time, 1) OVER (PARTITION BY sim_card_id, phone_number ORDER BY timestamp ) as previous_record_opening_time,
+     LAG(duration, 1) OVER (PARTITION BY sim_card_id, phone_number ORDER BY timestamp ) as previous_duration,
+     LAG(drop_reason, 1) OVER (PARTITION BY sim_card_id, phone_number ORDER BY timestamp ) as previous_drop_reason,
+     LAG(cell_id, 1) OVER (PARTITION BY sim_card_id, phone_number ORDER BY timestamp ) as previous_cell_id,
+     LAG(timestamp, 1) OVER (PARTITION BY sim_card_id, phone_number ORDER BY timestamp ) as previous_timestamp
+   FROM   
+   (
+    SELECT cdr.*, unix_timestamp(record_opening_time,'dd/MM/yyyy HH:mm:ss') as timestamp 
+    FROM cdr
+  ) t1 
+) t2
+where previous_timestamp is not null and 
+cast(timestamp as bigint) <= (cast(previous_timestamp as bigint) + cast(previous_duration as bigint) * 1000L + 60000L) and 
+cast(timestamp as bigint) >= (cast(previous_timestamp as bigint) + cast(previous_duration as bigint));
 
 

@@ -1,7 +1,7 @@
 storm.topologyName=CDR
 storm.killIfRunning=true
 storm.numWorkers=1
-storm.localMode=false
+storm.localMode=true
 zookeeper.host=sandbox.hortonworks.com:2181
 kafka.topic=cdr
 kafka.fromBeginning=true
