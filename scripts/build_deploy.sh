@@ -26,6 +26,8 @@ scp -r conf/ root@sandbox:/root/cdr/
 scp -r solr/ root@sandbox:/root/cdr/
 scp -r flume/ root@sandbox:/root/cdr/
 scp -r scripts/ root@sandbox:/root/cdr/
+scp -r hive/ root@sandbox:/root/cdr/
+scp -r phoenix/ root@sandbox:/root/cdr/
 scp -r data/ root@sandbox:/root/cdr/
 ssh root@sandbox chmod +x /root/cdr/scripts/*
 echo ""
