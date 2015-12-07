@@ -1,8 +1,13 @@
 package com.github.gbraccialli.telco.cdr.storm;
 
 import java.io.FileReader;
+
+
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -12,8 +17,11 @@ import org.apache.storm.hive.bolt.mapper.DelimitedRecordHiveMapper;
 import org.apache.storm.hive.common.HiveOptions;
 import org.apache.storm.jdbc.bolt.JdbcInsertBolt;
 import org.apache.storm.jdbc.common.Column;
+import org.apache.storm.jdbc.common.HikariCPConnectionProvider;
+import org.apache.storm.jdbc.common.ConnectionPrvoider;
 import org.apache.storm.jdbc.mapper.JdbcMapper;
 import org.apache.storm.jdbc.mapper.SimpleJdbcMapper;
+
 
 import storm.kafka.KafkaSpout;
 import storm.kafka.SpoutConfig;
@@ -27,11 +35,11 @@ import backtype.storm.tuple.Fields;
 
 import com.github.gbraccialli.telco.cdr.storm.bolt.DroppedCallBolt;
 import com.github.gbraccialli.telco.cdr.storm.bolt.NetworkTypeChangeBolt;
-import com.github.randerzander.StormCommon.bolts.RollingCountFromTimestampBolt;
-import com.github.randerzander.StormCommon.bolts.SolrBolt;
-import com.github.randerzander.StormCommon.bolts.SysoutBolt;
-import com.github.randerzander.StormCommon.utils.CSVScheme;
-import com.github.randerzander.StormCommon.utils.Utils;
+import com.github.gbraccialli.storm.commom.bolt.RollingCountFromTimestampBolt;
+import com.github.gbraccialli.storm.commom.bolt.SolrBolt;
+import com.github.gbraccialli.storm.commom.bolt.SysoutBolt;
+import com.github.gbraccialli.storm.commom.utils.CSVScheme;
+import com.github.gbraccialli.storm.commom.utils.Utils;
 
 
 public class Topology{
@@ -54,9 +62,13 @@ public class Topology{
 		Config conf = new Config();
 		conf.setNumWorkers(Integer.parseInt(props.get("storm.numWorkers")));
 		
-		HashMap<String, String> hikariProps = new HashMap<String, String>();
+		Map hikariProps = new HashMap<String, String>();
 		hikariProps.put("jdbcUrl", props.get("phoenix.jdbcURL"));
-		conf.put("jdbc.conf", hikariProps);
+		//conf.put("jdbc.conf", hikariProps);
+		//hikariProps.put("dataSource.url", props.get("phoenix.jdbcURL"));
+		ConnectionPrvoider connectionProvider = new HikariCPConnectionProvider(hikariProps);
+
+
 
 		TopologyBuilder builder = new TopologyBuilder();
 
@@ -80,7 +92,7 @@ public class Topology{
 		//1 SOURCE KAFKA - SPOUT
 		SpoutConfig CDRConfig = new SpoutConfig(new ZkHosts(zkHost),props.get("kafka.topic"), zkRoot, UUID.randomUUID().toString());
 		CDRConfig.scheme = new SchemeAsMultiScheme(new CSVScheme(allFields,","));
-		CDRConfig.forceFromStart = (Utils.checkProp(props, "kafka.fromBeginning", "true"));
+		CDRConfig.ignoreZkOffsets = (Utils.checkProp(props, "kafka.fromBeginning", "true"));
 		builder.setSpout("CDRSpout", new KafkaSpout(CDRConfig));
 
 		//2 HIVE BOLT - RAW CDR DATA
@@ -124,7 +136,7 @@ public class Topology{
             	    );
         	JdbcMapper simpleJdbcMapperPhoenixNetworkTypeChange = new SimpleJdbcMapper(columnSchemaPhoenixNetworkTypeChange);
 				
-			JdbcInsertBolt phoenixNetworkTypeChange = new JdbcInsertBolt("jdbc.conf", simpleJdbcMapperPhoenixNetworkTypeChange)
+			JdbcInsertBolt phoenixNetworkTypeChange = new JdbcInsertBolt(connectionProvider, simpleJdbcMapperPhoenixNetworkTypeChange)
                .withInsertQuery("upsert into CDR.NETWORK_TYPE_CHANGE values (?,?,?,?,?)")
                .withQueryTimeoutSecs(0);
 
@@ -163,7 +175,7 @@ public class Topology{
             	    );
         	JdbcMapper simpleJdbcMapperPhoenixDroppedCall = new SimpleJdbcMapper(columnSchemaPhoenixDroppedCall);
 				
-			JdbcInsertBolt phoenixDroppedCall = new JdbcInsertBolt("jdbc.conf", simpleJdbcMapperPhoenixDroppedCall)
+			JdbcInsertBolt phoenixDroppedCall = new JdbcInsertBolt(connectionProvider, simpleJdbcMapperPhoenixDroppedCall)
                .withInsertQuery("upsert into CDR.DROPPED_CALL values (?,?,?,?,?)")
                .withQueryTimeoutSecs(0);
 

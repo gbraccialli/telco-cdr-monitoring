@@ -19,7 +19,7 @@ public class GenerateSampleCDR {
 	//private static long sleepInterval = 1*60*1000;
 	private static long sleepInterval = 60000;
 	private static long milisBetweenRows = sleepInterval / numberOfRowsPerInteration;
-	private static String targetFolder = "/root/cdr/data";
+	private static String targetFolder = "/root/telco-cdr-monitoring/data";
 
 	final static String[] cellIds = new String[]{ 
 		"cell A",
@@ -121,6 +121,7 @@ public class GenerateSampleCDR {
 					writer.write(randomRow(currentTimestamp));
 					currentTimestamp += milisBetweenRows;
 				}
+				writer.flush();
 
 				rows = rnd.nextInt((int)(numberOfRowsPerInteration*0.6))+1;
 				System.out.println("drop=" + rows);

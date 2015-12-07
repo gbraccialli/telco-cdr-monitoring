@@ -1,7 +1,7 @@
 storm.topologyName=CDR
 storm.killIfRunning=true
 storm.numWorkers=1
-storm.localMode=true
+storm.localMode=false
 zookeeper.host=sandbox.hortonworks.com:2181
 kafka.topic=cdr
 kafka.fromBeginning=true
@@ -9,7 +9,7 @@ phoenix.jdbcURL=jdbc:phoenix:sandbox.hortonworks.com:2181:/hbase-unsecure
 solr.serverUrl=http://sandbox.hortonworks.com:8983/solr/cdr
 hive.metaStoreURI=thrift://sandbox.hortonworks.com:9083
 hive.dbName=default
-hive.tblName=cdr
+hive.tblName=telco_cdr_monitoring_raw
 dateFormat=dd/MM/yyyy HH:mm:ss
 allFields=session_id,sim_card_id,phone_number,record_opening_time,duration,cell_id,network_type,drop_reason
 sessionIdField=session_id

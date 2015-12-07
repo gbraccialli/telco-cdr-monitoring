@@ -1,8 +1,8 @@
 add jar /jars/phoenix-hive-4.2.0-jar-with-dependencies.jar;
 
-drop table if exists cdr;
+drop table if exists telco_cdr_monitoring_raw;
 
-create table cdr ( 
+create table telco_cdr_monitoring_raw ( 
 session_id string,
 sim_card_id string,
 phone_number string,

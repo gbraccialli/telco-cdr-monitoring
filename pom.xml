@@ -15,12 +15,14 @@
   </repositories>
 
   <properties>
-    <storm.version>0.9.3.2.2.4.0-2633</storm.version>
-    <kafka.version>0.8.1.2.2.4.0-2633</kafka.version>
-    <phoenix.version>4.2.0.2.2.4.0-2633</phoenix.version>
-    <solr.version>4.7.2</solr.version>
+    <hadoop.version>2.7.1.2.3.2.0-2950</hadoop.version>
+    <storm.version>0.10.0.2.3.2.0-2950</storm.version>
+    <phoenix.version>4.4.0.2.3.2.0-2950</phoenix.version>
+    <solr.version>5.2.1</solr.version>
     <httpclient.version>4.3.1</httpclient.version>
-    <commons-lang3.version>3.3.2</commons-lang3.version>    
+    <ranger_solrj.version>0.5.0.2.3.2.0-2950</ranger_solrj.version>    
+    <commons-lang3.version>3.3.2</commons-lang3.version>
+    <kafka.version>0.8.2.2.3.2.0-2950</kafka.version>
     <hikari.version>2.2.5</hikari.version>
   </properties>
 
@@ -41,7 +43,39 @@
         </exclusion>
       </exclusions>
     </dependency>
+    
+   <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-client</artifactId>
+      <version>${hadoop.version}</version>
+      <exclusions>
+              <exclusion>
+                      <groupId>org.slf4j</groupId>
+                      <artifactId>log4j-over-slf4j</artifactId>
+              </exclusion>
+              <exclusion>
+                      <groupId>org.slf4j</groupId>
+                      <artifactId>slf4j-log4j12</artifactId>
+              </exclusion>
+      </exclusions>
+    </dependency>
 
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-hdfs</artifactId>
+      <version>${hadoop.version}</version>
+      <exclusions>
+              <exclusion>
+                      <groupId>org.slf4j</groupId>
+                      <artifactId>log4j-over-slf4j</artifactId>
+              </exclusion>
+              <exclusion>
+                      <groupId>org.slf4j</groupId>
+                      <artifactId>slf4j-log4j12</artifactId>
+              </exclusion>
+      </exclusions>
+    </dependency>
+    
     <dependency>
       <groupId>org.apache.storm</groupId>
       <artifactId>storm-kafka</artifactId>
@@ -63,14 +97,12 @@
     <dependency>
       <groupId>org.apache.storm</groupId>
       <artifactId>storm-jdbc</artifactId>
-      <version>0.11.0-SNAPSHOT</version>
+      <version>${storm.version}</version>
     </dependency>
-    <!--  storm jdbc was not released yet, must be built and add to your local .m2 repo -->
-
     
     <dependency>
 			<groupId>org.apache.kafka</groupId>
-			<artifactId>kafka_2.8.0</artifactId>
+			<artifactId>kafka_2.10</artifactId>
 			<version>${kafka.version}</version>
 			<exclusions>
 				<exclusion>
@@ -133,18 +165,25 @@
       <scope>compile</scope>
     </dependency>
 
-	<dependency>
-      <groupId>com.github.randerzander</groupId>
-      <artifactId>StormCommon</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <!--  storm common from Randy's github, no public repo yet, must be in your .m2 local repo -->
-    
-
   </dependencies>
   <build>
-    <sourceDirectory>src</sourceDirectory>
     <plugins>
+	    <plugin>
+	    <groupId>org.codehaus.mojo</groupId>
+	    <artifactId>build-helper-maven-plugin</artifactId>
+	    <executions>
+	        <execution>
+	            <phase>generate-sources</phase>
+	            <goals><goal>add-source</goal></goals>
+	            <configuration>
+	                <sources>
+	                    <source>src/main/java</source>
+	                    <source>src/test/java</source>
+	                </sources>
+	            </configuration>
+	        </execution>
+	    </executions>
+	   </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
