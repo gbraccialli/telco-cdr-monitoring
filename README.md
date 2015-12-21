@@ -39,29 +39,22 @@ With special thanks to:
 #### Setup demo via scripts on vanilla HDP 2.3.2 sandbox
 
 These setup steps are only needed first time and may take upto 30min to execute (depending on your internet connection)
-  - While waiting on any step, if you don't already have Twitter credentials, follow steps [here](https://github.com/hortonworks-gallery/hdp22-twitter-demo#setup-twitter-credentials) to get them
 
-- Download HDP 2.3 sandbox VM image file (Sandbox_HDP_2.3_VMWare.ova) from [Hortonworks website](http://hortonworks.com/products/hortonworks-sandbox/) 
-- Import the ova into VMWare Fusion and allocate at least 4cpus and 8GB RAM (its preferable to increase to 9.6GB+ RAM) and start the VM
-- Find the IP address of the VM and add an entry into your machines hosts file e.g.
-```
-192.168.191.241 sandbox.hortonworks.com sandbox    
-```
+- Download HDP 2.3.2 sandbox from [Hortonworks website](http://hortonworks.com/products/hortonworks-sandbox/) 
+- Import the Sandbox into VMWare or VirtualBox and allocate at least 4cpus and 10GB RAM and start the VM
 - Connect to the VM via SSH (password hadoop). You can also SSH via browser by clicking: http://sandbox.hortonworks.com:4200
 ```
-ssh root@sandbox.hortonworks.com
+ssh -p 2222 root@localhost
 ```
 
 - **Download code** as root user
 ```
 cd
-git clone https://github.com/hortonworks-gallery/hdp22-twitter-demo.git	
+git clone https://github.com/gbraccialli/telco-cdr-monitoring.git	
 ```
 
-- **Setup demo**:Run below to setup demo (one time): it will start Ambari/HBase/Kafka/Storm and install maven, solr, banana. 
+- **Setup demo**:Run below to setup demo (one time): it will start HBase/Kafka/Storm, install solr, banana and create hive/phoenix tables.
 ```
-cd /root/hdp22-twitter-demo
-./setup-demo.sh
+cd /root/telco-cdr-monitoring
+scripts/setup-demo.sh
 ```
-  - while it runs, proceed with installing VNC service per steps below
-
