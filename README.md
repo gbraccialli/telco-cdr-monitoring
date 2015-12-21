@@ -21,20 +21,18 @@ With special thanks to:
   - Hive Streaming ORC (for interactive query) 
   - HBase (for granular events alerts)
   - Solr/Banana (for alerts and reports/dashboards)
-
 - Simulation:
   -  Generate "fake"CDR files every minute 
-
 - Demo setup:
-	- Start HDP 2.3.2 sandbox and run provided scripts to setup demo 
+  - Start HDP 2.3.2 sandbox and run provided scripts to setup demo 
 
 ------------------
 	
 #### Contents
 
-1. [Setup demo via scripts on vanilla HDP 2.3.2 sandbox](https://github.com/gbraccialli/telco-cdr-monitoring/#setup-demo-via-scripts-on-vanilla-hdp-232-sandbox)
-2. [Run demo](https://github.com/gbraccialli/telco-cdr-monitoring/#run-demo) to monitor Tweets about S&P 500 securities in realtime
-3. [Observe results](https://github.com/gbraccialli/telco-cdr-monitoring/#observe_results) in HDFS, Hive, HBase/Phoenix, Solr/Banana
+1. [Setup demo via scripts on vanilla HDP 2.3.2 sandbox](https://github.com/gbraccialli/telco-cdr-monitoring#setup-demo-via-scripts-on-vanilla-hdp-232-sandbox)
+2. [Run demo](https://github.com/gbraccialli/telco-cdr-monitoring#run-demo) to monitor Tweets about S&P 500 securities in realtime
+3. [Observe results](https://github.com/gbraccialli/telco-cdr-monitoring#observe_results) in HDFS, Hive, HBase/Phoenix, Solr/Banana
 
 ---------------------
 
