@@ -78,7 +78,7 @@
           "timefield": "record_opening_time_rounded_dt",
           "timeformat": "",
           "refresh": {
-            "enable": false,
+            "enable": true,
             "interval": 10,
             "min": 3
           },
