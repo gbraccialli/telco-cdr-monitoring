@@ -55,6 +55,7 @@ git clone https://github.com/gbraccialli/telco-cdr-monitoring.git
 
 - **Setup demo**:Run below to setup demo (one time): it will start HBase/Kafka/Storm, install solr, banana and create hive/phoenix tables.
 ```
+chmod -R +x /root/telco-cdr-monitoring/
 cd /root/telco-cdr-monitoring
 scripts/setup_demo.sh
 ```
