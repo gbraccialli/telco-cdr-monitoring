@@ -56,5 +56,48 @@ git clone https://github.com/gbraccialli/telco-cdr-monitoring.git
 - **Setup demo**:Run below to setup demo (one time): it will start HBase/Kafka/Storm, install solr, banana and create hive/phoenix tables.
 ```
 cd /root/telco-cdr-monitoring
-scripts/setup-demo.sh
+scripts/setup_demo.sh
 ```
+
+---------------------
+
+#### Run demo
+
+```
+ssh -p 2222 root@localhost
+```
+
+- Start all components:
+```
+cd /root/telco-cdr-monitoring
+scripts/start_demo.sh
+```
+or 
+- Start individual compoments:
+  - Flume
+```
+cd /root/telco-cdr-monitoring
+scripts/start_flume.sh
+```
+  - Storm
+```
+cd /root/telco-cdr-monitoring
+scripts/start_storm.sh
+```
+  - CDR Producer
+```
+cd /root/telco-cdr-monitoring
+scripts/start_cdr_producer.sh
+```
+
+---------------------
+
+#### Observe results
+
+- Dashboards
+  - [Dashboard Dropped Calls](http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json)
+  - [Dashboard Network Type Change](http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json_
+- Hive/Phoenix tables
+  - telco_cdr_monitoring_raw
+  - telco_cdr_monitoring_phoenix_dropped_call
+  - telco_cdr_monitoring_phoenix_network_type_change
