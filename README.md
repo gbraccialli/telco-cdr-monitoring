@@ -75,20 +75,20 @@ scripts/start_demo.sh
 or 
 - Start individual compoments:
   - Flume
-```
-cd /root/telco-cdr-monitoring
-scripts/start_flume.sh
-```
+  ```
+  cd /root/telco-cdr-monitoring
+  scripts/start_flume.sh
+  ```
   - Storm
-```
-cd /root/telco-cdr-monitoring
-scripts/start_storm.sh
-```
+  ```
+  cd /root/telco-cdr-monitoring
+  scripts/start_storm.sh
+  ```
   - CDR Producer
-```
-cd /root/telco-cdr-monitoring
-scripts/start_cdr_producer.sh
-```
+  ```
+  cd /root/telco-cdr-monitoring
+  scripts/start_cdr_producer.sh
+  ```
 
 ---------------------
 
