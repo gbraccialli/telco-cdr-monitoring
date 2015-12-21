@@ -2,7 +2,7 @@
 
 This demo was created to show Streaming components usage in a Telecom company.
 
-Author: [Guilherme Braccialli](https://www.linkedin.com/in/aliabajwa)
+Author: Guilherme Braccialli
 
 With special thanks to:
   - [Ali Bajwa](https://github.com/abajwa-hw) who created original Twitter Demo that inspired this demo.
