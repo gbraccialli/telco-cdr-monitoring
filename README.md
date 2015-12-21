@@ -32,7 +32,7 @@ With special thanks to:
 
 1. [Setup demo via scripts on vanilla HDP 2.3.2 sandbox](https://github.com/gbraccialli/telco-cdr-monitoring#setup-demo-via-scripts-on-vanilla-hdp-232-sandbox)
 2. [Run demo](https://github.com/gbraccialli/telco-cdr-monitoring#run-demo) to monitor Tweets about S&P 500 securities in realtime
-3. [Observe results](https://github.com/gbraccialli/telco-cdr-monitoring#observe_results) in HDFS, Hive, HBase/Phoenix, Solr/Banana
+3. [Observe results](https://github.com/gbraccialli/telco-cdr-monitoring#observe-results) in HDFS, Hive, HBase/Phoenix, Solr/Banana
 
 ---------------------
 
@@ -96,7 +96,7 @@ scripts/start_cdr_producer.sh
 
 - Dashboards
   - [Dashboard Dropped Calls](http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json)
-  - [Dashboard Network Type Change](http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json_
+  - [Dashboard Network Type Change](http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json)
 - Hive/Phoenix tables
   - telco_cdr_monitoring_raw
   - telco_cdr_monitoring_phoenix_dropped_call
