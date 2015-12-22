@@ -104,7 +104,7 @@ scripts/stop_demo.sh
 #### Observe results
 
 - Dashboards
-  - <a href="http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json" target="_blank"> Dashboard Dropped Calls</a>
+  - <a href="http://localhost:8983/solr/banana/index.html#/dashboard/file/droppedcalls.json" target="_blank"> Dashboard Dropped Calls</a>
   - <a href="http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json" target="_blank"> Dashboard Network Type Change</a>
  
 - Storm Topology UI
