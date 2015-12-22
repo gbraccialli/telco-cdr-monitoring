@@ -105,14 +105,16 @@ scripts/stop_demo.sh
 
 - Dashboards
   - <a href="http://localhost:8983/solr/banana/index.html#/dashboard/file/droppedcalls.json" target="_blank"> Dashboard Dropped Calls</a>
-  ![Image](https://github.com/gbraccialli/telco-cdr-monitoring/raw/master/screenshots/dropped_call_dashboard.png)
+    ![Image](https://github.com/gbraccialli/telco-cdr-monitoring/raw/master/screenshots/dropped_call_dashboard.png)
+
   - <a href="http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json" target="_blank"> Dashboard Network Type Change</a>
-  ![Image](https://github.com/gbraccialli/telco-cdr-monitoring/raw/master/screenshots/network_change_dashboard.png)
+    ![Image](https://github.com/gbraccialli/telco-cdr-monitoring/raw/master/screenshots/network_change_dashboard.png)
  
 - Storm Topology UI
   - <a href="http://localhost:8744/index.html" target="_blank"> Storm UI</a>
-  ![Image](https://github.com/gbraccialli/telco-cdr-monitoring/raw/master/screenshots/storm_ui_1.png)
-  ![Image](https://github.com/gbraccialli/telco-cdr-monitoring/raw/master/screenshots/storm_ui_2.png)
+    ![Image](https://github.com/gbraccialli/telco-cdr-monitoring/raw/master/screenshots/storm_ui_1.png)
+
+    ![Image](https://github.com/gbraccialli/telco-cdr-monitoring/raw/master/screenshots/storm_ui_2.png)
 
 - Hive/Phoenix tables
   - telco_cdr_monitoring_raw
