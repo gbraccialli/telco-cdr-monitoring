@@ -6,7 +6,7 @@ Author: Guilherme Braccialli
 
 With special thanks to:
   - <a href="https://github.com/abajwa-hw" target="_blank">Ali Bajwa</a> who created original Twitter Demo that inspired this demo.
-  - [Randy Gelhausen](https://github.com/randerzander){:target="_blank"} who created Storm Commons component.
+  - <a href="https://github.com/randerzander"target="_blank">Randy Gelhausen</a> who created Storm Commons component.
 
 ------------------
 
@@ -104,11 +104,11 @@ scripts/stop_demo.sh
 #### Observe results
 
 - Dashboards
-  - [Dashboard Dropped Calls](http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json){:target="_blank"} 
-  - [Dashboard Network Type Change](http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json){:target="_blank"} 
+  - <a href="http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json" target="_blank"> Dashboard Dropped Calls</a>
+  - <a href="http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json" target="_blank"> Dashboard Network Type Change</a>
  
 - Storm Topology UI
-  - [Storm UI](http://localhost:8744/index.html){:target="_blank"} 
+  - <a href="http://localhost:8744/index.html" target="_blank"> Storm UI</a>
 
 - Hive/Phoenix tables
   - telco_cdr_monitoring_raw
