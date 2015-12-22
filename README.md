@@ -57,6 +57,7 @@ git clone https://github.com/gbraccialli/telco-cdr-monitoring.git
 ```
 chmod -R +x /root/telco-cdr-monitoring/
 cd /root/telco-cdr-monitoring
+mvn clean package
 scripts/setup_demo.sh
 ```
 
