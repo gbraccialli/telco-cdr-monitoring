@@ -38,26 +38,26 @@ chmod -R +r /root/
 sudo -u hive hive -f /root/telco-cdr-monitoring/hive/cdr.sql
 
 echo '*** Restart Hive Tables...'
-curl -u admin:admin -H 'X-Requested-By: ambari' -X POST -d \
+curl -u $user:$pass -H 'X-Requested-By: ambari' -X POST -d \
 '{
    "RequestInfo":{
       "command":"RESTART",
       "context":"restart yarn and hive",
       "operation_level":{
          "level":"HOST",
-         "cluster_name":"Sandbox"
+         "cluster_name":"${cluster}"
       }
    },
    "Requests/resource_filters":[
       {
          "service_name":"HIVE",
          "component_name":"HIVE_CLIENT",
-         "hosts":"sandbox.hortonworks.com"
+         "hosts":"${host}"
       },
       {
          "service_name":"HIVE",
          "component_name":"HIVE_SERVER",
-         "hosts":"sandbox.hortonworks.com"
+         "hosts":"${host}"
       }
    ]
-}' http://localhost:8080/api/v1/clusters/Sandbox/requests
+}' http://${host}:8080/api/v1/clusters/${cluster}/requests
