@@ -1,5 +1,3 @@
-set -e
-
 source /root/telco-cdr-monitoring/scripts/ambari_util.sh
 
 echo '*** Starting Storm....'
@@ -37,27 +35,3 @@ chmod -R +x /root/
 chmod -R +r /root/
 sudo -u hive hive -f /root/telco-cdr-monitoring/hive/cdr.sql
 
-echo '*** Restart Hive Tables...'
-curl -u $user:$pass -H 'X-Requested-By: ambari' -X POST -d \
-'{
-   "RequestInfo":{
-      "command":"RESTART",
-      "context":"restart yarn and hive",
-      "operation_level":{
-         "level":"HOST",
-         "cluster_name":"${cluster}"
-      }
-   },
-   "Requests/resource_filters":[
-      {
-         "service_name":"HIVE",
-         "component_name":"HIVE_CLIENT",
-         "hosts":"${host}"
-      },
-      {
-         "service_name":"HIVE",
-         "component_name":"HIVE_SERVER",
-         "hosts":"${host}"
-      }
-   ]
-}' http://${host}:8080/api/v1/clusters/${cluster}/requests
