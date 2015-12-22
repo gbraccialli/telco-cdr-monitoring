@@ -13,10 +13,9 @@ With special thanks to:
 #### Purpose: Monitor Telecom Network equipments analyzing CDR (call detail record) records.
 
 Check more details in this [PDF presentation](https://github.com/gbraccialli/telco-cdr-monitoring/raw/master/docs/CDR-Monitoring-Demo.pdf).
-![PDF](https://github.com/gbraccialli/telco-cdr-monitoring/raw/master/docs/CDR-Monitoring-Demo.pdf)
 
 - Ingest: 
-  - Listen for CDR records in a directory
+  - Listen for CDR records coming as text file in a directory
 - Processing:
   - Monitor dropped calls
   - Monitor networks type change
@@ -25,7 +24,7 @@ Check more details in this [PDF presentation](https://github.com/gbraccialli/tel
   - HBase (for granular events alerts)
   - Solr/Banana (for alerts and reports/dashboards)
 - Simulation:
-  -  Generate "fake"CDR files every minute 
+  -  Generate "fake" CDR files every minute 
 - Demo setup:
   - Start HDP 2.3.2 sandbox and run provided scripts to setup demo 
 
@@ -102,6 +101,7 @@ or
 - Dashboards
   - [Dashboard Dropped Calls](http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json)
   - [Dashboard Network Type Change](http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json)
+ 
 - Hive/Phoenix tables
   - telco_cdr_monitoring_raw
   - telco_cdr_monitoring_phoenix_dropped_call
