@@ -10,11 +10,7 @@
   <repositories>
     <repository>
       <id>hortonworks</id>
-      <url>http://repo.hortonworks.com/content/repositories/releases/</url>
-    </repository>
-    <repository>
-      <id>hortonworksjetty</id>
-      <url>http://repo.hortonworks.com/content/repositories/jetty-hadoop/</url>
+      <url>http://repo.hortonworks.com/content/repositories/public/</url>
     </repository>
   </repositories>
 
