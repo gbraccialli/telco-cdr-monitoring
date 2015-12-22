@@ -5,8 +5,8 @@ This demo was created to show Streaming components usage in a Telecom company.
 Author: Guilherme Braccialli
 
 With special thanks to:
-  - [Ali Bajwa](https://github.com/abajwa-hw) who created original Twitter Demo that inspired this demo.
-  - [Randy Gelhausen](https://github.com/randerzander) who created Storm Commons component.
+  - <a href="https://github.com/abajwa-hw" target="_blank">Ali Bajwa</a> who created original Twitter Demo that inspired this demo.
+  - <a href="https://github.com/randerzander"target="_blank">Randy Gelhausen</a> who created Storm Commons component.
 
 ------------------
 
@@ -93,16 +93,33 @@ or
   cd /root/telco-cdr-monitoring
   scripts/start_cdr_producer.sh
   ```
+- To stop Demo, use:
+```
+cd /root/telco-cdr-monitoring
+scripts/stop_demo.sh
+```
 
 ---------------------
 
 #### Observe results
 
 - Dashboards
-  - [Dashboard Dropped Calls](http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json)
-  - [Dashboard Network Type Change](http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json)
+  - <a href="http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json" target="_blank"> Dashboard Dropped Calls</a>
+  - <a href="http://localhost:8983/solr/banana/index.html#/dashboard/file/networktypechange.json" target="_blank"> Dashboard Network Type Change</a>
  
+- Storm Topology UI
+  - <a href="http://localhost:8744/index.html" target="_blank"> Storm UI</a>
+
 - Hive/Phoenix tables
   - telco_cdr_monitoring_raw
   - telco_cdr_monitoring_phoenix_dropped_call
   - telco_cdr_monitoring_phoenix_network_type_change
+
+- Log files
+  - /root/telco-cdr-monitoring/logs/flume.log
+  - /root/telco-cdr-monitoring/logs/producer.log
+  - /root/telco-cdr-monitoring/logs/storm.log
+
+- CDR Files
+  - /root/telco-cdr-monitoring/data
+  
