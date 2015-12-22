@@ -5,7 +5,7 @@ This demo was created to show Streaming components usage in a Telecom company.
 Author: Guilherme Braccialli
 
 With special thanks to:
-  - [Ali Bajwa](https://github.com/abajwa-hw){:target="_blank"} who created original Twitter Demo that inspired this demo.
+  - <a href="https://github.com/abajwa-hw" target="_blank">Ali Bajwa</a> who created original Twitter Demo that inspired this demo.
   - [Randy Gelhausen](https://github.com/randerzander){:target="_blank"} who created Storm Commons component.
 
 ------------------
