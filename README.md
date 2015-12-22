@@ -12,6 +12,9 @@ With special thanks to:
 
 #### Purpose: Monitor Telecom Network equipments analyzing CDR (call detail record) records.
 
+Check more details in this [PDF presentation](https://github.com/gbraccialli/telco-cdr-monitoring/raw/master/docs/CDR-Monitoring-Demo.pdf).
+![PDF](https://github.com/gbraccialli/telco-cdr-monitoring/raw/master/docs/CDR-Monitoring-Demo.pdf)
+
 - Ingest: 
   - Listen for CDR records in a directory
 - Processing:
