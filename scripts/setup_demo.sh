@@ -10,7 +10,7 @@ echo '*** Starting Kafka....'
 startWait KAFKA
 
 KAFKA_HOME=/usr/hdp/current/kafka-broker
-TOPICS=`$KAFKA_HOME/bin/kafka-topics.sh --zookeeper localhost:2181 --list | wc -l`
+TOPICS=`$KAFKA_HOME/bin/kafka-topics.sh --zookeeper localhost:2181 --list | grep cdr | wc -l`
 if [ $TOPICS == 0 ]
 then
 	echo "No Kafka topics found...creating..."
